@@ -20,7 +20,7 @@ def checkout(request):
     current_bag = bag_contents(request)
     total = current_bag['grand_total']
     stripe_total = round(total * 100)
-    stripe.api_key = 'sk_test_51IbNAFGOFACUw6CtDI8CavOVK3m9iOAzhZi0RyfUlQ24vY6tBFNMmz7sbB9t645yY3wz06ZyVo2NUiN5y3po2Isp00BBY3AiFm'
+    stripe.api_key = stripe_secret_key
     intent = stripe.PaymentIntent.create(
         amount=stripe_total,
         currency=settings.STRIPE_CURRENCY,
